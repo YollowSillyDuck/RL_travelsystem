@@ -4,146 +4,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>旅游管理系统登录</title>
+    <title>环球旅游系统</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-       /* 全局样式 */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #007BFF, #00D4FF);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            overflow: hidden;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f8f9fa;
         }
 
-      /* 登录容器样式 */
-    .login-container {
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-            padding: 35px;
-            width: 420px;
-            animation: fadeIn 0.8s ease-in-out;
+        /* 增强头部样式 */
+        header {
+            background: linear-gradient(135deg, #007BFF, #00c3ff);
+            color: white;
+            padding: 80px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* 现代化导航栏 */
+        .navbar {
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
-    .login-container h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #007BFF;
-            font-size: 30px;
-            font-weight: 600;
-            letter-spacing: 1px;
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            padding: 20px 25px !important;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
-     .form-group {
-            margin-bottom: 20px;
+        .nav-link:hover {
+            color: #007BFF !important;
+            transform: translateY(-2px);
         }
 
-     .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 600;
-        }
-
-     .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-     .form-group input:focus {
-            outline: none;
-            border-color: #00B4DB;
-        }
-
-     .form-group button {
-            width: 100%;
-            padding: 14px;
-            background-color: #00B4DB;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-     .form-group button:hover {
-            background-color: #0083B0;
-        }
-
-     .forgot-password {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 15px;
-            color: #666;
-        }
-
-     .forgot-password a {
-            color: #00B4DB;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-     .forgot-password a:hover {
-            color: #0083B0;
-        }
-
-        /* 新增图标样式 */
-     .form-group i {
+        .nav-link::after {
+            content: '';
             position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ccc;
-            font-size: 20px;
+            bottom: 15px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #007BFF;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 60%;
+            left: 20%;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,123,255,0.8), rgba(0,195,255,0.8)),
+                        url('https://source.unsplash.com/1920x1080/?travel');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .cta-button {
+            background: #FFD700;
+            color: #333;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0;
+            margin-top: 100px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 50vh;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            .nav-link {
+                padding: 15px 0 !important;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="login-container">
-        <h2>欢迎登录旅游管理系统</h2>
-        <form>
-            <div class="form-group">
-                <label for="username">用户名</label>
-                <div class="input-group">
-                    <input type="text" id="username" required>
-                    <i class="fa-solid fa-user"></i>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://th.bing.com/th/id/R.8912e2f3119ff058afbfdfaf6b728701?rik=rhRiTe12hzrJuA&riu=http%3a%2f%2fwww.kuaipng.com%2fUploads%2fpic%2fw%2f2020%2f07-17%2f89046%2fwater_89046_698_698_.png&ehk=QRXWFbq1mZdtKqEVwaoC0Lx%2frF7VDgSQ29huuHyuSiU%3d&risl=&pid=ImgRaw&r=0" alt="Travel" style="height:40px">
+                环球旅游
+            </a>
+ <!-- 右侧用户操作区 -->
+            <div class="d-flex align-items-center order-lg-3 ml-auto">
+                <!-- 用户按钮 -->
+                <div class="dropdown">
+                    <a class="btn btn-link text-dark" href="#" role="button" id="userMenu" 
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-lg"></i>
+                    </a>
+                    <!-- 下拉菜单 -->
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                        <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt mr-2"></i>登录</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-user-plus mr-2"></i>注册</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>账户设置</a>
+                    </div>
                 </div>
+                <!-- 折叠按钮 -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-            <div class="form-group">
-                <label for="password">密码</label>
-                <div class="input-group">
-                    <input type="password" id="password" required>
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" onclick="window.location.href = 'new.html';">登录</button>
-            </div>
-        </form>
-        <p class="forgot-password"><a href="#">忘记密码？</a></p>
-    </div>
-</body>
 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            旅游服务
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="attractions.html">景点推荐</a>
+                            <a class="dropdown-item" href="routes.html">路线规划</a>
+                            <a class="dropdown-item" href="guides.html">旅行指南</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">在线预订</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">旅游日志</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="display-4">探索世界之美</h1>
+            <p class="lead">发现全球100+个独特旅行目的地</p>
+            <a href="#explore" class="cta-button">立即探索</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="explore" class="py-5">
+            <h2>精选目的地</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <img src="https://photo.colorhub.me/7bX8VF1cPNg/rs:auto:0:500:0/g:ce/fn:colorhub/bG9jYWw6Ly8vOTEvMDkvMWIwZGU5NjhmY2Y2YTUyNjU2M2MyNTI5NjM5ZTZhNzE0MDJlOTEwOS5qcGVn.webp" alt="巴黎" class="img-fluid rounded">
+                        <h3 class="mt-3">浪漫巴黎</h3>
+                        <p>探索埃菲尔铁塔、卢浮宫等经典地标</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <img src="https://cdn.colorhub.me/ZTQqIWXmlJw/rs:auto:0:500:0/g:ce/fn:colorhub/bG9jYWw6Ly8vODMvN2EvYjU2N2Y3NTJlMTQzN2RjMzI2NTI2NjdjZmUxNTQ0MTI3YmQ5ODM3YS5qcGVn.webp" alt="东京" class="img-fluid rounded">
+                        <h3 class="mt-3">东京印象</h3>
+                        <p>体验传统与现代的完美融合</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <img src="https://cdn.colorhub.me/rk8TfgUXygk/rs:auto:0:500:0/g:ce/fn:colorhub/bG9jYWw6Ly8vMmQvYTkvODcwYjI0NDg0YWRiMjQ3NGEwODRhMDBhM2NlMTFiZjlmMDg0MmRhOS5qcGc.webp" alt="悉尼" class="img-fluid rounded">
+                        <h3 class="mt-3">悉尼风情</h3>
+                        <p>感受南半球的阳光与活力</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2>特色服务</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-route text-primary mr-2"></i>个性化路线规划</li>
+                        <li class="mb-3"><i class="fas fa-hotel text-primary mr-2"></i>精品酒店预订</li>
+                        <li class="mb-3"><i class="fas fa-car text-primary mr-2"></i>全程接送服务</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://cdn.colorhub.me/BM3OC_7kduU/rs:auto:0:500:0/g:ce/fn:colorhub/bG9jYWw6Ly8vODMvMmMvMGRiMWNlMzgwYjcwOTVmOGEyMmI1ZjBlMzkzMzE2ZGYwMjk1ODMyYy5qcGVn.webp" alt="旅行服务" class="img-fluid rounded">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-4">
+        <div class="social-links mb-3">
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <a href="#"><i class="fab fa-weibo"></i></a>
+            <a href="#"><i class="fab fa-qq"></i></a>
+        </div>
+</div>
+                </div>
+                <div class="text-center mt-3">
+                    <p>&copy; 2023 环球旅游 版权所有</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- 脚本文件 -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
 </html>
