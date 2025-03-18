@@ -7,134 +7,7 @@
     <title>中国旅游系统</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        /* 增强头部样式 */
-        header {
-            background: linear-gradient(135deg, #007BFF, #00c3ff);
-            color: white;
-            padding: 80px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* 现代化导航栏 */
-        .navbar {
-            background: rgba(255,255,255,0.97);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link {
-            color: #333 !important;
-            font-weight: 500;
-            padding: 20px 25px !important;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #007BFF !important;
-            transform: translateY(-2px);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #007BFF;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 60%;
-            left: 20%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0,123,255,0.8), rgba(0,195,255,0.8)),
-                        url('https://source.unsplash.com/1920x1080/?travel');
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .cta-button {
-            background: #FFD700;
-            color: #333;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 50px 0;
-            margin-top: 100px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #FFD700;
-            transform: translateY(-3px);
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: 50vh;
-                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-            }
-            
-            .nav-link {
-                padding: 15px 0 !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="indexstlye.css">
 </head>
 
 <body>
@@ -144,21 +17,41 @@
                 <img src="https://th.bing.com/th/id/R.8912e2f3119ff058afbfdfaf6b728701?rik=rhRiTe12hzrJuA&riu=http%3a%2f%2fwww.kuaipng.com%2fUploads%2fpic%2fw%2f2020%2f07-17%2f89046%2fwater_89046_698_698_.png&ehk=QRXWFbq1mZdtKqEVwaoC0Lx%2frF7VDgSQ29huuHyuSiU%3d&risl=&pid=ImgRaw&r=0" alt="Travel" style="height:40px">
                 中国旅游
             </a>
+            <div class="logged-out"></div>
  <!-- 右侧用户操作区 -->
-            <div class="d-flex align-items-center order-lg-3 ml-auto">
-                <!-- 用户按钮 -->
-                <div class="dropdown">
-                    <a class="btn btn-link text-dark" href="#" role="button" id="userMenu" 
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-circle fa-lg"></i>
-                    </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-        <a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt mr-2"></i>登录</a>
-        <a class="dropdown-item" href="#"><i class="fas fa-user-plus mr-2"></i>注册</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>账户设置</a>
-                    </div>
+ <div class="d-flex align-items-center order-lg-3 ml-auto">
+    <!-- 登录状态显示 -->
+    <div id="loggedInUser" class="mr-3 d-none">
+        <div class="dropdown">
+            <a class="btn btn-link text-dark d-flex align-items-center" 
+               href="#" role="button" id="userMenu" data-toggle="dropdown">
+                <span id="usernameDisplay" class="mr-2"></span>
+                <i class="fas fa-user-circle fa-lg"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="px-3 py-2">
+                    <span class="text-muted small">当前登录：</span>
+                    <span id="dropdownUsername" class="font-weight-bold"></span>
                 </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>账户设置</a>
+                <a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt mr-2"></i>退出登录</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 未登录状态显示 -->
+    <div id="loggedOutUser" class="dropdown">
+        <a class="btn btn-link text-dark" href="#" role="button" 
+           data-toggle="dropdown" id="guestMenu">
+            <i class="fas fa-user-circle fa-lg"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt mr-2"></i>登录</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-user-plus mr-2"></i>注册</a>
+        </div>
+    </div>
+</div>
                 <!-- 折叠按钮 -->
                 <button class="navbar-toggler" type="submit" onclick="window.location.href = 'login.html' data-toggle="collapse" data-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -260,10 +153,9 @@
                 </div>
             </div>
         </footer>
-
-        <!-- 脚本文件 -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="./index.js"></script>
     </body>
 </html>
